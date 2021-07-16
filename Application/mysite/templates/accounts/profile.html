@@ -1,0 +1,37 @@
+{% extends 'accounts/base.html' %}
+{% load static %}
+{% block title %}Profile{% endblock title %}
+{% block main-content %}
+<div class="container my-5">
+ <div class="row">
+  <h3>Welcome <span class="text-capitalize"> {{ request.user.email}}</span></h3>
+  <h4></h4>
+  <div class="col-sm-2 border-end">
+
+  </div>
+  <h4>Change Password</h4>
+  <div class="col-sm-2 border-end">
+   <ul class="list-unstyled">
+    <li class="d-grid"><a href="{% url 'changepass' %}" class="btn btn-warning">Change Password</a></li>
+   </ul>
+   <ul class="list-unstyled">
+    <li class="d-grid"><a href="{% url 'update' %}" class="btn btn-warning">Update Profile</a></li>
+   </ul>
+  </div>     
+  <div class="col-sm-8 offset-sm-1" id="resizeMe">
+<h1>{{request.user.name}}</h1>
+<h4>{{request.user.email}}</h4>
+<h4>{{request.user.contact_number}}</h4>
+<h4>{{request.user.address}}</h4>
+<h4>{{request.user.dateofbirth}}</h4>
+
+  </div>
+   {% if messages %}
+   {% for message in messages %}
+   <p {% if message.tags %} class="alert alert-{{message.tags}} mb-5" {% endif %}>{{message}}</p>
+   {% endfor %} 
+   {% endif %}
+  </div>
+ </div>
+</div>
+{% endblock main-content %}
